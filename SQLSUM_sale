@@ -1,0 +1,14 @@
+SELECT session_id, SUM(items) , SUM(sales_amount)
+FROM public.order
+WHERE delivered = 1 AND returned = 0
+GROUP BY session_id
+ORDER BY session_id;
+
+
+
+
+SELECT customer_id, SUM(sales_amount) AS sum_sale
+FROM public.order
+GROUP BY customer_id
+HAVING SUM(sales_amount) > 1000
+ORDER BY sum_sale DESC; 
